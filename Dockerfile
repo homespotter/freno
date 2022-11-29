@@ -12,7 +12,7 @@ COPY --from=0 /go/src/github.com/github/freno/freno /usr/local/bin/freno
 RUN adduser --system freno
 RUN mkdir -p /var/lib/freno && chown -R freno /var/lib/freno
 
-ENV BREAK_CACHE 202006031453
+ENV BREAK_CACHE 1669739285
 
 RUN apk add --no-cache aws-cli
 
@@ -27,7 +27,8 @@ RUN mkdir /root/.aws/ && \
     rm -rf /root/.aws
 
 EXPOSE 3000
+EXPOSE 10007
 
 USER freno
 ENTRYPOINT ["freno"]
-CMD ["--http", "--verbose"]
+CMD ["--http", "--debug"]

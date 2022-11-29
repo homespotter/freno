@@ -1,6 +1,4 @@
-# freno
-
-[![build status](https://github.com/github/freno/actions/workflows/main.yml/badge.svg)](https://github.com/github/freno/actions/workflows/main.yml) [![downloads](https://img.shields.io/github/downloads/github/freno/total.svg)](https://github.com/github/freno/releases) [![release](https://img.shields.io/github/release/github/freno.svg)](https://github.com/github/freno/releases)
+# HS freno
 
 Cooperative, highly available throttler service: clients use `freno` to throttle writes to a resource.
 
@@ -9,6 +7,11 @@ Current implementation can throttle writes to (multiple) MySQL clusters, based o
 `freno` dynamically adapts to changes in server inventory; it can further be controlled by the user to force throttling of certain apps.
 
 `freno` is highly available and uses `raft` consensus protocol to decide leadership and to pass user events between member nodes.
+
+
+### Local testing
+
+Run `make run-local` to test freno against a proxysql container also running locally. Make sure to check the config in `local/freno.conf.json` and update it with proxysql admin credentials and mysql credentials for your target mysql cluster. The url to access would then be http://localhost:3000/check/test/mysql/read
 
 
 ### Cooperative

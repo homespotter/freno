@@ -1,0 +1,26 @@
+{
+    "ListenPort": 3000,
+    "RaftBind": "127.0.0.1",
+    "DefaultRaftPort": 10007,
+    "RaftDataDir": "/var/lib/freno",
+    "RaftNodes": [],
+  
+    "Stores": {
+      "MySQL": {
+        "Clusters": {
+          "read": {
+            "ThrottleThreshold": 1,
+            "User": "root",
+            "Password": "root",
+            "ProxySQLSettings": {
+              "User": "proxysql",
+              "Password": "proxysql",
+              "HostgroupID": 20,
+              "Addresses": ["172.17.0.1:6032"]
+            }
+          }
+        }
+      }
+    }
+  }
+  
