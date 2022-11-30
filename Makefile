@@ -8,6 +8,16 @@ push-prod: aws-login
 	docker tag freno:latest 769352775470.dkr.ecr.us-east-1.amazonaws.com/freno:latest
 	docker push 769352775470.dkr.ecr.us-east-1.amazonaws.com/freno:latest
 
+build-staging:
+	docker build \
+		--build-arg AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID} \
+		--build-arg AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY} \
+		-t freno:staging -f staging/Dockerfile.staging .
+
+push-staging: aws-login
+	docker tag freno:staging 769352775470.dkr.ecr.us-east-1.amazonaws.com/freno:staging
+	docker push 769352775470.dkr.ecr.us-east-1.amazonaws.com/freno:staging
+
 build-local:
 	docker build -t freno:local -f local/Dockerfile.local .
 

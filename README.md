@@ -1,5 +1,7 @@
 # HS freno
 
+Adapted from [freno](https://github.com/github/freno). 
+
 Cooperative, highly available throttler service: clients use `freno` to throttle writes to a resource.
 
 Current implementation can throttle writes to (multiple) MySQL clusters, based on replication status for those clusters. `freno` will throttle cooperative clients when replication lag exceeds a pre-defined threshold.
@@ -14,7 +16,11 @@ Current implementation can throttle writes to (multiple) MySQL clusters, based o
 Run `make run-local` to test freno against a proxysql container also running locally. Make sure to check the config in `local/freno.conf.json` and update it with proxysql admin credentials and mysql credentials for your target mysql cluster. The url to access would then be http://localhost:3000/check/test/mysql/read
 
 
-### Cooperative
+### Prod setup
+
+Currently, jobs1-3 have freno docker containers running for high availability. To update/restart the container, run `prod_run.sh` on each of the 3 jobs servers. Read the [raft](https://github.com/homespotter/freno/#raft) section for additional information on raft and freno's high availability.
+
+## freno features
 
 `freno` collects data from backend stores (at this time MySQL only) and has the logic to answer the question "may I write to the backend store?"
 
